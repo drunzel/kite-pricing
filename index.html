@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кайтсерфинг - Расценки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 3em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tables-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .table-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .table-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .table-card h2 {
+            color: #2d3748;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4facfe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f7fafc;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 1.1em;
+        }
+
+        /* Стили для таблицы аренды */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 0 -10px;
+            padding: 0 10px;
+        }
+
+        .rental-table td:first-child {
+            font-weight: 600;
+            color: #2d3748;
+            min-width: 200px; /* Минимальная ширина для первой колонки */
+        }
+
+        .rental-table th,
+        .rental-table td {
+            padding: 12px 10px;
+            white-space: nowrap;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .tables-container {
+                gap: 20px;
+            }
+
+            .table-card {
+                padding: 20px;
+            }
+
+            .table-card h2 {
+                font-size: 1.4em;
+            }
+
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.95em;
+            }
+
+            /* Упрощаем таблицу на мобильных */
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .table-card {
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.85em;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 0.9em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏄‍♂️ Кайтсерфинг</h1>
+            <p class="subtitle">Расценки на обучение и аренду снаряжения</p>
+        </header>
+
+        <div class="tables-container">
+            <!-- Таблица обучения -->
+            <div class="table-card">
+                <h2><span class="icon">📚</span> Обучение</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Количество часов</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 час</td>
+                            <td class="price">65 €</td>
+                        </tr>
+                        <tr>
+                            <td>4 часа</td>
+                            <td class="price">250 €</td>
+                        </tr>
+                        <tr>
+                            <td>5 часов</td>
+                            <td class="price">300 €</td>
+                        </tr>
+                        <tr>
+                            <td>9 часов</td>
+                            <td class="price">500 €</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Таблица аренды -->
+            <div class="table-card rental-card">
+                <h2><span class="icon">🪂</span> Цены на аренду снаряжения</h2>
+                <div class="table-wrapper">
+                    <table class="rental-table">
+                    <thead>
+                        <tr>
+                            <th>Снаряжение</th>
+                            <th>Час</th>
+                            <th>День</th>
+                            <th>Неделя</th>
+                            <th>Месяц</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Комплект (кайт+трапеция+доска)</td>
+                            <td class="price">40€</td>
+                            <td class="price">70€</td>
+                            <td class="price">250€</td>
+                            <td class="price">400€</td>
+                        </tr>
+                        <tr>
+                            <td>Только кайт</td>
+                            <td class="price">25€</td>
+                            <td class="price">50€</td>
+                            <td class="price">200€</td>
+                            <td class="price">300€</td>
+                        </tr>
+                        <tr>
+                            <td>Только доска</td>
+                            <td class="price">15€</td>
+                            <td class="price">40€</td>
+                            <td class="price">100€</td>
+                            <td class="price">250€</td>
+                        </tr>
+                        <tr>
+                            <td>Только трапеция</td>
+                            <td class="price">10€</td>
+                            <td class="price">30€</td>
+                            <td class="price">80€</td>
+                            <td class="price">130€</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>🌊 Ловите волну вместе с нами! 🌊</p>
+        </footer>
+    </div>
+</body>
+</html>
